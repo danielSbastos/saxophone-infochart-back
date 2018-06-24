@@ -1,4 +1,6 @@
-# SaxophoneInfochartBack
+# Saxophone Infochart Backend
+
+Application that provides the definition of the main pieces of a saxophone with an api.
 
 - [Dependencies](#dependencies)
 - [Setup](#setup)
@@ -16,9 +18,7 @@ mix local.hex --force
 mix deps.get
 ```
 
-- **With docker**
-
-`docker build -t sax-back .`
+- With docker: `docker build -t sax-back .`
 
 ## Development
 
@@ -26,6 +26,4 @@ mix deps.get
 
 `mix phx.server`
 
-- **With docker**
-
-`docker run -p 4000:4000 sax-back`
+- With docker: `docker run -p 4000:4000 sax-back`
