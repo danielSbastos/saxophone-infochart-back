@@ -1,0 +1,30 @@
+version: 2
+jobs:
+  test:
+    working_directory: ~/saxophone_infochart_back
+    docker:
+      - image: elixir:1.5.2
+        environment:
+          MIX_ENV: test
+    steps:
+      - checkout
+      - restore_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "mix.lock" }}
+      - run:
+          name: Install dependencies
+          command: |
+            mix local.hex --force
+            mix deps.get
+      - save_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "mix.lock" }}
+          paths:
+            - "venv"
+      - run:
+          name: Run tests
+          command: mix test
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      - test
