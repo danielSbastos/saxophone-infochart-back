@@ -37,10 +37,10 @@ defmodule SaxophoneInfochartBackWeb.StructureControllerTest do
     assert test_conn.status == 200
   end
 
-  test "GET /api/bell returns success", %{conn: conn} do
+  test "GET /api/body returns success", %{conn: conn} do
     test_conn = conn
     |> put_req_header("accept", "application/json")
-    |> get("/api/bell")
+    |> get("/api/body")
 
     assert test_conn.resp_body == """
       The sound vibrates within the body and is amplified. By holding down the keys,

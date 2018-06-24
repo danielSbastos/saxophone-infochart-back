@@ -25,7 +25,7 @@ defmodule SaxophoneInfochartBackWeb.StructureController do
     conn |> send_resp(200, data)
   end
 
-  def bell(conn, _params) do
+  def body(conn, _params) do
     data = """
       The sound vibrates within the body and is amplified. By holding down the keys,
       which are located on the body, you change the length of the air column to create
