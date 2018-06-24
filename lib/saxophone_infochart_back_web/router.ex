@@ -13,6 +13,6 @@ defmodule SaxophoneInfochartBackWeb.Router do
     get "/neck",        StructureController, :neck
     get "/bell",        StructureController, :bell
     get "/octave_pin",  StructureController, :octave_pin
-    get "/neck_rap",    StructureController, :neck_rap
+    get "/neck_strap",  StructureController, :neck_strap
   end
 end

@@ -69,9 +69,8 @@ defmodule SaxophoneInfochartBackWeb.StructureControllerTest do
     |> get("/api/neck_strap")
 
     assert test_conn.resp_body == """
-      It's a strap that is looped through an eyelet on the back side of the horn
-      and worn around the player’s neck. The neck strap lets the player carry
-      the saxophone and supports the instrument so the fingers can move freely over the keys.
+      It's a strap worn around the player’s neck. Its lets the player carry the
+      saxophone and supports the instrument so the fingers can move freely over the keys.
     """
     assert test_conn.status == 200
   end
