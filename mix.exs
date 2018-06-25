@@ -35,6 +35,7 @@ defmodule SaxophoneInfochartBack.Mixfile do
       {:phoenix, "~> 1.3.0"},
       {:phoenix_pubsub, "~> 1.0"},
       {:gettext, "~> 0.11"},
+      {:cors_plug, "~> 1.5"},
       {:cowboy, "~> 1.0"}
     ]
   end
