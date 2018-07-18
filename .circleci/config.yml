@@ -24,8 +24,28 @@ jobs:
           name: Run tests
           command: mix test
 
+  deploy-dockerhub:
+    requires:
+      - test
+    working_directory: ~/saxophone_infochart_back
+    docker:
+      - image: docker:17.05.0-ce-git
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Push application Docker image
+          command: |
+            set -x
+
+            docker login --username ${DOCKER_HUB_USERNAME} --password ${DOCKER_HUB_PASSWORD}
+            docker build -t saxophone-backend:${CIRCLE_SHA1} .
+            docker tag saxophone-backend:${CIRCLE_SHA1} dbastos/saxophone-backend:${CIRCLE_SHA1}
+            docker push dbastos/saxophone-backend:${CIRCLE_SHA1}
+
 workflows:
   version: 2
   main:
     jobs:
       - test
+      - deploy-dockerhub
