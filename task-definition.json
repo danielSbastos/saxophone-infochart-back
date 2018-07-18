@@ -1,0 +1,22 @@
+{
+    "family": "saxophone-back",
+    "networkMode": "awsvpc",
+    "containerDefinitions": [
+        {
+            "name": "saxophone-backend",
+            "image": "dbastos/saxophone-backend:1",
+            "portMappings": [
+                {
+                    "protocol": "tcp",
+                    "containerPort": 4000,
+                    "hostPort": 4000
+                }
+            ]
+        }
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "256",
+    "memory": "1024"
+}
