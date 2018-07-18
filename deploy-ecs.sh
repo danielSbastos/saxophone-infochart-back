@@ -7,8 +7,7 @@ function updateTaskDefinition {
 
 function registerTask {
   aws ecs register-task-definition --cli-input-json file://$HOME/saxophone_infochart_back/task-definition.json | \
-  python -c 'import json,sys; obj=json.load(sys.stdin);print obj["taskDefinition"]["taskDefinitionArn"]' | \
-  export NEW_TASK=`xargs`
+  echo `python -c 'import json,sys; obj=json.load(sys.stdin);print obj["taskDefinition"]["taskDefinitionArn"]'`
 }
 
 function updateService {
@@ -16,5 +15,5 @@ function updateService {
 }
 
 updateTaskDefinition
-registerTask
+NEW_TASK=`registerTask`
 updateService
