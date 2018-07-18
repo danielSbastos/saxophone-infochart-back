@@ -1,21 +1,18 @@
 {
-    "cluster": "blog-saxophone-cluster",
-    "serviceName": "blog-saxophone-backend-service",
-    "taskDefinition": "saxophone-back",
-    "desiredCount": 1,
-    "launchType": "FARGATE",
-    "networkConfiguration": {
-        "awsvpcConfiguration": {
-	    "subnets": [
-    "subnet-0000b55c",
-    "subnet-902a419f"
-]
-
-  	    ,
-	    "securityGroups": ["sg-ce4f8d84"],
-            "assignPublicIp": "ENABLED"
-  	}
+  "cluster": "blog-saxophone-cluster",
+  "serviceName": "blog-saxophone-backend-service",
+  "taskDefinition": "saxophone-back",
+  "desiredCount": 1,
+  "launchType": "FARGATE",
+  "networkConfiguration": {
+    "awsvpcConfiguration": {
+    "subnets": [
+      "subnet-0000b55c",
+      "subnet-902a419f"
+    ],
+    "securityGroups": ["sg-ce4f8d84"],
+      "assignPublicIp": "ENABLED"
     }
-
   }
+}
 
