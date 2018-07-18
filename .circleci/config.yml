@@ -24,9 +24,7 @@ jobs:
           name: Run tests
           command: mix test
 
-  deploy-dockerhub:
-    requires:
-      - test
+  deploy:
     working_directory: ~/saxophone_infochart_back
     docker:
       - image: docker:17.05.0-ce-git
@@ -39,7 +37,7 @@ jobs:
             apk add --no-cache py-pip=9.0.0-r1
             pip install awscli==1.15.35
       - run:
-          name: Push application Docker image
+          name: Push to DockerHub
           command: |
             docker login --username ${DOCKER_HUB_USERNAME} --password ${DOCKER_HUB_PASSWORD}
             docker build -t saxophone-backend:${CIRCLE_SHA1} .
@@ -47,12 +45,19 @@ jobs:
             docker push dbastos/saxophone-backend:${CIRCLE_SHA1}
 
       - run:
-          name: Deploy to ecs
+          name: Deploy to ECS
           command: |
             /bin/sh ./deploy-ecs.sh
+
 workflows:
   version: 2
   main:
     jobs:
       - test
-      - deploy-dockerhub
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - test
